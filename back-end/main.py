@@ -7,7 +7,7 @@ client = OpenAI()
 #Modèle de l'API
 MODEL="gpt-4o-mini" 
 #system message
-systemMessage = "You are a helpful productivity assistant, you will be provided with a long term objective, and your role will be to reformulate the objective as a project name, and output a list of actionnable, daily and precise tasks to achive this project."
+systemMessage = "You are a helpful productivity assistant, you will be provided with a long term objective that the user wants to achieve, and your role will be to reformulate the objective as a project name, and output a list of actionnable, daily and precise tasks to achive this project."
 #--------
 
 # message de l'utilisateur
@@ -17,7 +17,7 @@ userMessage = "My long term objective is to learn how to play the guitar."
 
 # --- Fonction pour obtenir les tâches par l'API---
 
-def get_tasks_API(userMessage):
+def generate_task_API(userMessage):
     completion = client.beta.chat.completions.parse(
         model=MODEL,
         messages=[
@@ -41,7 +41,7 @@ def convert_to_json(result):
     return json.dumps(result, indent=4)
 
 #--- Appel de la fonction pour obtenir les tâches ---
-result = get_tasks_API(userMessage)
+result = generate_task_API(userMessage)
 
 #--- Convertir le résultat en JSON ---
 json_result = convert_to_json(result)
