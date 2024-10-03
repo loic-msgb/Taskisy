@@ -4,13 +4,14 @@ from models import responseModel
 
 # --- Constants ---
 client = OpenAI()
-MODEL="gpt-4o-mini" #Modèle de l'API
+#Modèle de l'API
+MODEL="gpt-4o-mini" 
 #system message
-systemMessage = "You are a helpful productivity assistant, you will be provided with a long term objective, and your role will be to reformulate the objective as a project name, and output a list of actionnable tasks to achive this project."
+systemMessage = "You are a helpful productivity assistant, you will be provided with a long term objective, and your role will be to reformulate the objective as a project name, and output a list of actionnable, daily and precise tasks to achive this project."
 #--------
 
 # message de l'utilisateur
-userMessage = "Build a website for my business"
+userMessage = "My long term objective is to learn how to play the guitar."
 
 
 
