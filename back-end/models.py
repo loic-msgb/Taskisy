@@ -14,5 +14,4 @@ class responseModel(BaseModel):
 
 # Modèles pour la base de données
 
-
-    
+  
