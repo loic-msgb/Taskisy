@@ -1,6 +1,7 @@
 from pydantic import BaseModel
 
 
+
 # Modèles pour la réponse de l'API
 class responseModel(BaseModel):
 
@@ -11,7 +12,3 @@ class responseModel(BaseModel):
     project: str
     task: list[TaskModel]
 # ----------------------------
-
-# Modèles pour la base de données
-
-  
