@@ -1,6 +1,6 @@
 from openai import OpenAI
 import json
-from llmModels import responseModel
+from llm.llmModels import responseModel
 
 # --- Constants ---
 client = OpenAI()
@@ -17,7 +17,7 @@ userMessage = "My long term objective is to learn how to play the guitar."
 
 # --- Fonction pour obtenir les tâches par l'API---
 
-def generate_task_API(userMessage):
+def generate_tasks_API(userMessage):
     completion = client.beta.chat.completions.parse(
         model=MODEL,
         messages=[
@@ -41,7 +41,7 @@ def convert_to_json(result):
     return json.dumps(result, indent=4)
 
 #--- Appel de la fonction pour obtenir les tâches ---
-result = generate_task_API(userMessage)
+result = generate_tasks_API(userMessage)
 
 #--- Convertir le résultat en JSON ---
 json_result = convert_to_json(result)
@@ -49,3 +49,5 @@ json_result = convert_to_json(result)
 #--- Enregistrer le résultat dans un fichier JSON ---
 with open("result.json", "w") as f:
     f.write(json_result)
+
+

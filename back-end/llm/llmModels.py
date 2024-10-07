@@ -1,7 +1,6 @@
 from pydantic import BaseModel
 
 
-
 # Modèles pour la réponse de l'API
 class responseModel(BaseModel):
 
