@@ -13,6 +13,7 @@ import json
 from auth import get_password_hash, create_access_token, get_current_user, verify_password
 from authModels import Token, UserCreate, TokenData
 from dbModels import User, Base, get_db, Project, Task
+from tasks import get_project_id, get_project_tasks
 
 import sys
 import os
@@ -113,6 +114,7 @@ def generate_tasks(userMessage: str = Form(...), db: Session = Depends(get_db), 
 
     return {"detail": "Task generation successful"}
 
+# Endpoint pour récupérer les projets de l'utilisateur
 @app.get("/projects")
 def get_projects(db: Session = Depends(get_db), current_user: User = Depends(get_current_user)):
     # Récupérer les projets associés à l'utilisateur connecté
@@ -123,7 +125,12 @@ def get_projects(db: Session = Depends(get_db), current_user: User = Depends(get
     
     return projects
 
-
+# Endpoint pour récupérer les tâches d'un projet
+@app.get("/project_tasks/")
+def get_tasks(project_name: str = Form(...), db: Session = Depends(get_db), current_user: User = Depends(get_current_user)):
+    project_id = get_project_id(project_name, db)
+    tasks = get_project_tasks(project_id, db)
+    return tasks
 
 
 if __name__ == "__main__":
